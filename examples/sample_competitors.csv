@@ -1,0 +1,5 @@
+name,positioning,strengths,weaknesses,pricing,target_user
+PulseBoard,Lightweight pulse survey for small teams,Simple weekly check-in and trend chart,Limited action planning and weak anonymity controls,Freemium,Startup team leads
+MoodMap,Team mood analytics dashboard,Good visualization and manager alerts,Complex setup for small teams,Per seat,People Ops teams
+ActionLoop,Retrospective and improvement tracker,Strong action follow-up workflow,Does not focus on recurring health signals,Per workspace,Project managers
+QuietSignal,Anonymous feedback inbox,Strong anonymous submission experience,Lacks structured weekly cadence,Flat monthly fee,Remote-first teams

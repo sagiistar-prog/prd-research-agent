@@ -1,0 +1,15 @@
+preferred_language: zh-CN
+prd_depth: interview_demo
+output_tone: clear_product_manager
+safe_demo_only: true
+
+fictional_context:
+  company: Example Studio
+  market: team productivity
+  region: demo market
+
+format_preferences:
+  include_feature_tree: true
+  include_user_stories: true
+  include_acceptance_criteria: true
+  include_priority_table: true
