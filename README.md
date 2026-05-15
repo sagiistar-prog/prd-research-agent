@@ -10,6 +10,12 @@ Safe Demo 使用完全虚构数据，可离线运行：
 python scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
 ```
 
+Windows 兼容命令：
+
+```powershell
+py -3 scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
+```
+
 ## 项目定位
 
 这个项目用于展示一个产品经理如何把模糊需求推进到开发可读的 PRD 初稿。它强调三件事：
@@ -65,6 +71,12 @@ pip install -r requirements.txt
 python scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
 ```
 
+Windows 兼容命令：
+
+```powershell
+py -3 scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
+```
+
 4. 运行作品集审计：
 
 ```powershell
@@ -80,6 +92,12 @@ python scripts/generate_prd.py \
   --output examples/generated_prd.md \
   --rules configs/prd_rules.yaml \
   --dry-run
+```
+
+Windows 兼容命令：
+
+```powershell
+py -3 scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
 ```
 
 - `--input`：简单需求输入，支持 Markdown。

@@ -8,6 +8,12 @@ Safe Demo proves the project can run without private data or external services.
 python scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
 ```
 
+Windows 兼容命令：
+
+```powershell
+py -3 scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
+```
+
 ## Expected Result
 
 The command writes:
