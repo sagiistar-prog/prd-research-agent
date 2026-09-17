@@ -1,0 +1,4 @@
+interface:
+  display_name: "prd-research-agent"
+  short_description: "Turn a requirement brief into a reviewable PRD with assumptions, constraints, user stories and accep"
+  default_prompt: "Use $prd-research-agent to help complete the task with traceable inputs and reviewable outputs."

@@ -50,11 +50,7 @@ def opportunity_notes(rows: List[Dict[str, str]]) -> str:
     if not weaknesses:
         return "竞品短板信息不足，建议补充定性访谈或公开资料。"
 
-    notes = [
-        "- 机会 1：把周期性信号采集和行动建议连接起来，避免只停留在看板展示。",
-        "- 机会 2：把匿名、聚合和可解释规则放进 MVP，提升用户信任。",
-        "- 机会 3：优先服务轻量团队，减少复杂配置带来的采用门槛。",
-    ]
+    notes = [f"- 输入样本 {row.get('name', '未命名')} 的短板：{row['weaknesses']}。待验证：该问题是否影响目标用户的核心任务；未独立核实。" for row in rows if row.get("weaknesses")]
     return "\n".join(notes)
 
 

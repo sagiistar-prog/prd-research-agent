@@ -1,0 +1,37 @@
+{
+  "requirement_markdown": "# 示例需求：TeamPulse 团队健康度助手\n\n产品名称：TeamPulse 团队健康度助手\n\n一句话需求：帮助 20 到 200 人的远程团队每周收集团队健康度信号，发现协作风险，并生成可执行的改进建议。\n\n目标用户：远程团队负责人、项目经理、People Ops 伙伴。\n\n当前问题：\n\n- 团队负责人通常只能在项目延期后才发现协作问题。\n- 现有问卷工具能收集反馈，但很难自动沉淀趋势和行动建议。\n- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。\n\n核心场景：\n\n- 每周五自动发起 3 分钟健康度脉冲问卷。\n- 周一团队负责人查看趋势、风险主题和建议行动。\n- 当某个维度连续两周下降时，系统提醒负责人安排跟进。\n\n约束：\n\n- MVP 只支持单团队，不做复杂组织架构。\n- 演示数据必须是虚构数据。\n- 不要求接入真实聊天工具。\n\n成功指标：\n\n- 试用团队首周问卷完成率达到 70%。\n- 团队负责人每周至少查看一次报告。\n- 4 周内至少创建 1 条改进行动。\n",
+  "competitors": [
+    {
+      "name": "PulseBoard",
+      "positioning": "Lightweight pulse survey for small teams",
+      "strengths": "Simple weekly check-in and trend chart",
+      "weaknesses": "Limited action planning and weak anonymity controls",
+      "pricing": "Freemium",
+      "target_user": "Startup team leads"
+    },
+    {
+      "name": "MoodMap",
+      "positioning": "Team mood analytics dashboard",
+      "strengths": "Good visualization and manager alerts",
+      "weaknesses": "Complex setup for small teams",
+      "pricing": "Per seat",
+      "target_user": "People Ops teams"
+    },
+    {
+      "name": "ActionLoop",
+      "positioning": "Retrospective and improvement tracker",
+      "strengths": "Strong action follow-up workflow",
+      "weaknesses": "Does not focus on recurring health signals",
+      "pricing": "Per workspace",
+      "target_user": "Project managers"
+    },
+    {
+      "name": "QuietSignal",
+      "positioning": "Anonymous feedback inbox",
+      "strengths": "Strong anonymous submission experience",
+      "weaknesses": "Lacks structured weekly cadence",
+      "pricing": "Flat monthly fee",
+      "target_user": "Remote-first teams"
+    }
+  ]
+}

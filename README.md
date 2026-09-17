@@ -1,5 +1,24 @@
 # PRD Research Agent
 
+
+[产品案例与指标](docs/product-case.md) | [能力证据](docs/capability-evidence.json) | [验收与边界](docs/validation.md)
+
+## 面试官 30 秒版
+
+把模糊需求整理成可复核的 PRD 初稿。先让目标用户、约束和待验证假设可见，再讨论功能。跨领域输入不应混入团队健康度的固定结论。
+
+当前可验证能力：**offline_template**。确定性模板草稿；不调用模型，不执行联网调研。 优先级与功能建议需要人工确认，不能作为真实市场结论。
+
+[插件使用与产品取舍](docs/plugin.md) · [输入示例](examples/plugin-input.json) · [输入契约](schemas/input.schema.json) · [维护记录](CHANGELOG.md)
+
+```bash
+python -m pip install -r requirements-plugin.txt
+python scripts/plugin_run.py --input examples/plugin-input.json
+```
+
+## 原有工作流与详细说明
+
+
 ## 面试官 30 秒版
 
 PRD Research Agent 是一个面向产品经理的 AI Agent 项目样例：它从一句简单需求出发，按“澄清需求 → 用户场景 → 市场与竞品 → 功能范围 → 优先级 → 用户故事 → 验收标准 → PRD 初稿”的链路生成结构化产物。项目不是只演示脚本，而是把产品经理的分析方法、文档框架、安全演示、公开仓库审计和可复现 demo 打包成一个独立 GitHub 项目。

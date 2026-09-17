@@ -135,7 +135,7 @@ def requirement_summary(markdown: str) -> Dict[str, object]:
         "target_users": extract_label(markdown, ["目标用户", "用户"]),
         "problems": collect_bullets_after(markdown, "当前问题"),
         "scenarios": collect_bullets_after(markdown, "核心场景"),
-        "constraints": collect_bullets_after(markdown, "约束"),
+        "constraints": collect_bullets_after(markdown, "约束") or ([extract_label(markdown, ["约束", "限制", "Constraints"])] if extract_label(markdown, ["约束", "限制", "Constraints"]) else []),
         "metrics": collect_bullets_after(markdown, "成功指标"),
     }
 
@@ -224,17 +224,25 @@ def competitor_insights(competitors: List[Dict[str, str]]) -> str:
     if not competitors:
         return "- 需要补充竞品样本后再判断差异化机会。"
 
-    return "\n".join(
-        [
-            "- 多数竞品只覆盖反馈收集或看板展示，机会在于把信号、解释和行动闭环连起来。",
-            "- 小团队采用门槛敏感，因此 MVP 应减少配置复杂度。",
-            "- 匿名和聚合规则会直接影响反馈真实性，应作为基础能力而不是后置增强。",
-        ]
-    )
+    notes = []
+    for row in competitors:
+        if row.get("weaknesses", "").strip():
+            notes.append(f"- 输入样本 {row.get('name', '未命名竞品')} 的已记录短板：{row['weaknesses']}。机会假设：验证该问题是否影响目标用户的核心任务；尚未独立核实。")
+    return "\n".join(notes) or "- 样本未提供短板证据，暂不推断差异化机会。"
+
 
 
 def clarification_questions(summary: Dict[str, object]) -> List[str]:
     product_name = summary["product_name"]
+    if detect_domain(summary) != "team_health":
+        users = summary.get("target_users") or "目标用户"
+        return [
+            f"{users} 在什么具体情境下需要 {product_name}？",
+            "现在用什么方法完成任务，最难或最耗时的一步是什么？",
+            "首版必须解决哪一个问题，哪些功能可以明确不做？",
+            "有哪些数据、时间、预算或权限约束需要确认？",
+            "用什么可观察的行为验证价值，观察周期是多少？",
+        ]
     return [
         f"{product_name} 的首个付费或试用用户是团队负责人、People Ops，还是项目经理？",
         "匿名反馈的最小展示人数是多少，低于阈值时是否隐藏结果？",
@@ -263,7 +271,7 @@ def priority_rows(features: Dict[str, List[str]]) -> str:
         reason = reasons[index] if index < len(reasons) else "增强完整体验"
         treatment = "纳入 MVP" if label in {"Must", "Should"} else "放入后续版本评估"
         rows.append(f"| {name} | {label} | {reason} | {treatment} |")
-    rows.append("| 复杂组织架构 | Won't | 会显著增加配置和权限复杂度 | 当前版本不做 |")
+    rows.append("| 未经验证的扩展功能 | Won't | 缺少核心任务价值证据 | 当前版本不做 |")
     return "\n".join(rows)
 
 
@@ -292,7 +300,7 @@ def user_stories(features: Dict[str, List[str]], summary: Dict[str, object]) -> 
 def scenario_table(summary: Dict[str, object]) -> str:
     scenarios = summary.get("scenarios", []) or []
     if not scenarios:
-        scenarios = ["用户提交需求", "负责人查看分析", "团队确认 MVP 范围"]
+        scenarios = ["用户提交需求", "用户核对结果", "用户确认下一步"]
 
     rows = [
         "| 场景 | 触发 | 用户目标 | 产品机会 |",
@@ -314,6 +322,9 @@ def build_prd(
     features = feature_tree(summary, rules)
     feature_names = list(features.keys())
     feature_sentence = f"{product_name}产品有{'/'.join(feature_names)}功能。"
+    generic = detect_domain(summary) != "team_health"
+    risk_notes = ["仅收集完成核心任务所需的数据，并提供错误恢复。", "将输入事实、待验证假设和模板建议分别标注。", "未进行独立市场验证，结论须由产品负责人确认。"] if generic else ["匿名反馈按团队聚合，人数不足时隐藏趋势。", "提醒解释原因，避免把分数当作个人评价。"]
+    non_goals = ["不把模板建议当作已验证需求。", "不接入未经授权的私有数据。", "不输出未经确认的真实市场结论。"]
     generated_on = dt.date.today().isoformat()
     mode = "Safe Demo / dry-run / offline deterministic" if dry_run else "local generation"
 
@@ -344,6 +355,10 @@ def build_prd(
     当前问题：
 
     {markdown_list(summary.get("problems", []) or [])}
+
+    已知约束：
+
+    {markdown_list(summary.get("constraints", []) or [])}
 
     成功指标：
 
@@ -383,10 +398,7 @@ def build_prd(
 
     ## 9. 数据与风控
 
-    - 匿名反馈必须以团队聚合方式展示，避免个人可识别信息进入公开 demo。
-    - 当样本量不足时，系统应隐藏趋势判断并提示继续收集。
-    - 风险提醒需要解释原因，避免让用户把分数误读成个人评价。
-    - 当前版本不接入真实账号、聊天记录或私有系统。
+    {markdown_list(risk_notes)}
 
     ## 10. 里程碑
 
@@ -399,17 +411,11 @@ def build_prd(
 
     ## 11. 非目标
 
-    - 不做复杂组织架构。
-    - 不做个人绩效评分。
-    - 不接入真实聊天工具。
-    - 不输出未经确认的真实市场结论。
+    {markdown_list(non_goals)}
 
     ## 12. 后续开放问题
 
-    - 是否需要团队负责人和成员看到不同的信息层级？
-    - 是否允许管理员自定义健康度维度？
-    - 风险提醒的频率和打扰阈值如何设置？
-    - 报告导出的主要使用场景是周会、复盘，还是向上汇报？
+    {markdown_list(clarification_questions(summary))}
     """
 
     return textwrap.dedent(content).strip() + "\n"
