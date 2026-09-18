@@ -1,54 +1,9 @@
-# Case Study: TeamPulse
+# Case study
 
-TeamPulse is a fictional product used to demonstrate PRD Research Agent.
+The former generator confused its own workflow with the user's product. Version 0.3 separates literal evidence extraction, host-authored product judgment, deterministic validation, and human review.
 
-## Starting Point
+The complete fictional examples are [TeamPulse input](../examples/plugin-input.json), [TeamPulse plan](../examples/team-pulse-plan.json), [FitCheck input](../examples/fitcheck-input.json), and [FitCheck plan](../examples/fitcheck-plan.json). Their plans are explicit authored fixtures, never hidden keyword-selected answers.
 
-A product manager receives a simple request:
+TeamPulse prioritizes the feedback-to-action loop and privacy uncertainty. FitCheck prioritizes local CSV checking and human handling of uncertain compatibility; optional AI summarization is deferred until its value is observed. The examples show decisions and testable proposed behavior. Neither business product is implemented here.
 
-> Help remote team leads understand team health before collaboration risks become delivery problems.
-
-This input is intentionally incomplete. The agent must turn it into a structured PRD draft.
-
-## Product Thinking
-
-The first product question is not "what screen should we build?" It is:
-
-- Who feels the pain first?
-- When does the pain appear?
-- What decision should the product help them make?
-- What is the smallest useful workflow?
-
-For TeamPulse, the first segment is a remote team lead managing 20 to 200 people. The recurring workflow is weekly pulse collection, Monday review, and follow-up action.
-
-## MVP Scope
-
-The MVP includes:
-
-- Weekly health check setup
-- Anonymous response collection
-- Team-level trend dashboard
-- Risk alerts
-- Suggested improvement actions
-- Markdown report export
-
-The MVP excludes:
-
-- Complex organization hierarchy
-- Real-time messaging integration
-- Performance review workflows
-- Individual employee scoring
-
-## Why This Is a Good Portfolio Demo
-
-This case shows product manager strengths beyond prompt writing:
-
-- Ambiguous requirement framing
-- User segmentation
-- Privacy-sensitive product judgment
-- Competitive positioning
-- Feature scoping
-- Prioritization
-- Development-ready acceptance criteria
-
-The sample is fictional, so it is safe for a public repository.
+See [the product decision record](product-case.md) for the problem, tradeoffs and proposed value measures, and [acceptance evidence](evidence-review-acceptance.md) for what was actually tested.

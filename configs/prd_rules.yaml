@@ -1,34 +1,12 @@
 project_name: PRD Research Agent
 language: zh-CN
-prd_version: v0.1
-dry_run_mode: offline_deterministic
-
-required_sections:
-  - 需求摘要
-  - 澄清问题
-  - 用户与场景
-  - 市场与竞品分析
-  - 产品功能总览
-  - 功能范围与子功能
-  - 优先级与版本范围
-  - 用户故事与验收标准
-  - 数据与风控
-  - 里程碑
-
-default_function_modules:
-  - 需求理解与澄清
-  - 用户场景分析
-  - 市场与竞品研究
-  - 功能范围定义
-  - 优先级判断
-  - PRD 初稿生成
-
-prioritization_framework: MoSCoW
-acceptance_criteria_style: Gherkin
-max_competitors_in_summary: 5
-
+prd_version: v0.3
+dry_run_mode: offline_evidence_review
+compatibility_note: Legacy --rules is accepted but does not inject features or timelines.
+plan_contract: schemas/plan.schema.json
 quality_rules:
-  - 每个一级功能必须包含 3 到 5 个子功能
-  - MVP 范围必须解释取舍原因
-  - 验收标准必须可测试
-  - 示例必须使用虚构数据
+  - 功能关联用户问题和证据或假设
+  - 优先级说明取舍而非按顺序分配
+  - 验收条件描述可观察结果
+  - 约束需要显式响应
+  - 迭代按退出条件推进

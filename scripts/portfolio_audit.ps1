@@ -146,8 +146,12 @@ $realDataPatterns = @(
 
 foreach ($file in $exampleFiles) {
     $content = Read-Utf8 $file.FullName
+    # Input fingerprints are content digests, not contact data. Only mask the
+    # documented JSON field and Markdown digest line; scan all other text.
+    $dataScanContent = $content -replace '("analysis_id"\s*:\s*")[a-f0-9]{64}("|$)', '${1}<sha256>${2}'
+    $dataScanContent = $dataScanContent -replace '(?m)^\u8f93\u5165\u6307\u7eb9\uff1a\x60[a-f0-9]{64}\x60\s*$', '<sha256>'
     foreach ($item in $realDataPatterns) {
-        if ($content -match $item.Pattern) {
+        if ($dataScanContent -match $item.Pattern) {
             Add-Fail "Possible real data '$($item.Name)' found in $(Get-RelativePath $file.FullName)"
         }
     }

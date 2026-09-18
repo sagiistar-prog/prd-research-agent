@@ -1,0 +1,501 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "6bfc39e9c8b9c86f549f7d835240385366cf7dcbcda4c30bd797b83696dfd63a",
+  "product_name": "TeamPulse 团队健康度助手",
+  "objective": {
+    "statement": "让远程团队负责人从每周反馈中发现协作阻碍，并留下能在下一次复盘验证的改进行动。",
+    "basis": {
+      "evidence_refs": [
+        {
+          "id": "E003",
+          "quote": "一句话需求：帮助 20 到 200 人的远程团队每周收集团队健康度信号，发现协作风险，并生成可执行的改进建议。"
+        },
+        {
+          "id": "E005",
+          "quote": "- 团队负责人通常只能在项目延期后才发现协作问题。"
+        },
+        {
+          "id": "E006",
+          "quote": "- 现有问卷工具能收集反馈，但很难自动沉淀趋势和行动建议。"
+        }
+      ],
+      "assumption_ids": []
+    }
+  },
+  "users": [
+    {
+      "id": "U1",
+      "name": "远程团队负责人",
+      "job": "周一阅读团队层面的变化，选出一个需要跟进的问题。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E004",
+            "quote": "目标用户：远程团队负责人、项目经理、People Ops 伙伴。"
+          },
+          {
+            "id": "E009",
+            "quote": "- 周一团队负责人查看趋势、风险主题和建议行动。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "id": "U2",
+      "name": "团队成员",
+      "job": "在短问卷中表达协作阻碍，同时知道哪些数据会被负责人看见。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E007",
+            "quote": "- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。"
+          },
+          {
+            "id": "E008",
+            "quote": "- 每周五自动发起 3 分钟健康度脉冲问卷。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "P1",
+      "description": "负责人发现协作阻碍太晚，已有反馈也难以转成下一步行动。",
+      "user_ids": [
+        "U1"
+      ],
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E005",
+            "quote": "- 团队负责人通常只能在项目延期后才发现协作问题。"
+          },
+          {
+            "id": "E006",
+            "quote": "- 现有问卷工具能收集反馈，但很难自动沉淀趋势和行动建议。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "id": "P2",
+      "description": "成员担心回答被追溯，反馈可能失真。",
+      "user_ids": [
+        "U2"
+      ],
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E007",
+            "quote": "- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    }
+  ],
+  "features": [
+    {
+      "id": "F1",
+      "name": "每周反馈采集",
+      "problem_ids": [
+        "P2"
+      ],
+      "scope": "mvp",
+      "priority": "must",
+      "priority_rationale": "没有可信输入就没有趋势；先降低填写和隐私理解成本，再考虑复杂分析。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E007",
+            "quote": "- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。"
+          },
+          {
+            "id": "E008",
+            "quote": "- 每周五自动发起 3 分钟健康度脉冲问卷。"
+          }
+        ],
+        "assumption_ids": [
+          "A1"
+        ]
+      },
+      "dependencies": [],
+      "subfeatures": [
+        {
+          "name": "填写前说明",
+          "description": "明确数据用途、保留期和可见范围，默认不收集姓名、部门细分或自由文本。"
+        },
+        {
+          "name": "单团队问卷",
+          "description": "团队负责人设置一个周五开放的问卷，成员可跳过问题并在提交前检查。"
+        }
+      ],
+      "stories": [
+        {
+          "user_id": "U2",
+          "want": "用不超过三分钟的问卷提交反馈",
+          "benefit": "表达问题并理解可见范围",
+          "acceptance": [
+            {
+              "given": "单团队本周问卷开放",
+              "when": "成员填写并提交一次",
+              "then": "显示收到反馈；公开页面和负责人页面都不返回个人回答。"
+            },
+            {
+              "given": "必答项未完成",
+              "when": "成员点击提交",
+              "then": "明确指出缺项，已填答案保留且允许退出。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "团队趋势与风险复核",
+      "problem_ids": [
+        "P1"
+      ],
+      "scope": "mvp",
+      "priority": "must",
+      "priority_rationale": "负责人需要判断变化是否值得行动；按人数阈值抑制展示先于更细颗粒度洞察。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E009",
+            "quote": "- 周一团队负责人查看趋势、风险主题和建议行动。"
+          },
+          {
+            "id": "E011",
+            "quote": "- MVP 只支持单团队，不做复杂组织架构。"
+          },
+          {
+            "id": "E007",
+            "quote": "- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。"
+          }
+        ],
+        "assumption_ids": [
+          "A1"
+        ]
+      },
+      "dependencies": [
+        "F1"
+      ],
+      "subfeatures": [
+        {
+          "name": "聚合报告",
+          "description": "只展示满足阈值的团队周度维度分布和可比周趋势，无逐人详情。"
+        },
+        {
+          "name": "复核入口",
+          "description": "负责人将某个维度标记为需要讨论；只记录团队问题，不推断个人状态。"
+        }
+      ],
+      "stories": [
+        {
+          "user_id": "U1",
+          "want": "看到有足够样本支持的周度变化",
+          "benefit": "在项目延期前发现需要讨论的阻碍",
+          "acceptance": [
+            {
+              "given": "本周仅有四份有效回答",
+              "when": "负责人打开报告",
+              "then": "不返回维度分布，仅说明样本不足；导出与接口采用相同抑制规则。"
+            },
+            {
+              "given": "本周和上周各有至少五份有效回答",
+              "when": "负责人比较趋势",
+              "then": "展示两周样本量与维度分布，并说明它们是聚合反馈而非个人绩效。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "改进行动跟进",
+      "problem_ids": [
+        "P1"
+      ],
+      "scope": "mvp",
+      "priority": "must",
+      "priority_rationale": "趋势必须连接下一步；先让人选择行动，避免把生成建议当成团队共识。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E006",
+            "quote": "- 现有问卷工具能收集反馈，但很难自动沉淀趋势和行动建议。"
+          },
+          {
+            "id": "E016",
+            "quote": "- 4 周内至少创建 1 条改进行动。"
+          }
+        ],
+        "assumption_ids": []
+      },
+      "dependencies": [
+        "F2"
+      ],
+      "subfeatures": [
+        {
+          "name": "行动记录",
+          "description": "从报告创建一条行动，写清责任角色、检查条件与复盘节点。"
+        },
+        {
+          "name": "复盘记录",
+          "description": "负责人记录已做什么、观察到什么，允许结论为无改善。"
+        }
+      ],
+      "stories": [
+        {
+          "user_id": "U1",
+          "want": "从一个反馈主题建立可复盘的行动",
+          "benefit": "验证是否减少了具体协作阻碍",
+          "acceptance": [
+            {
+              "given": "负责人已标记一个团队问题",
+              "when": "保存包含责任角色与复盘条件的行动",
+              "then": "报告保留行动链接和待复盘状态。"
+            },
+            {
+              "given": "行动尚未填写复盘条件",
+              "when": "点击保存",
+              "then": "提示补充验收依据，不自动宣称问题已解决。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "name": "连续下降提醒",
+      "problem_ids": [
+        "P1"
+      ],
+      "scope": "later",
+      "priority": "should",
+      "priority_rationale": "自动提醒需要稳定的可比数据，先验证周报是否被使用，再评估提醒噪声。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E010",
+            "quote": "- 当某个维度连续两周下降时，系统提醒负责人安排跟进。"
+          }
+        ],
+        "assumption_ids": [
+          "A2"
+        ]
+      },
+      "dependencies": [
+        "F2"
+      ],
+      "subfeatures": [
+        {
+          "name": "下降规则",
+          "description": "只对连续三周可比样本中的连续两次下降生成站内候选提醒。"
+        },
+        {
+          "name": "去重与关闭",
+          "description": "同一维度同一周最多一条提醒，负责人可标记无需跟进并说明原因。"
+        }
+      ],
+      "stories": [
+        {
+          "user_id": "U1",
+          "want": "在连续下降时收到可复核的提醒",
+          "benefit": "减少遗漏但避免被无效警报打扰",
+          "acceptance": [
+            {
+              "given": "某维度连续三周均满足样本阈值且连续两次下降",
+              "when": "执行规则检查两次",
+              "then": "只产生一条带三周聚合依据的站内提醒。"
+            },
+            {
+              "given": "任一周样本不足",
+              "when": "执行规则检查",
+              "then": "不产生下降提醒，保留数据不足状态。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constraint_responses": [
+    {
+      "evidence_id": "E011",
+      "treatment": "honored",
+      "implementation": "仅单团队数据域；组织树和跨团队比较列入排除项。",
+      "feature_ids": [
+        "F1",
+        "F2"
+      ]
+    },
+    {
+      "evidence_id": "E012",
+      "treatment": "honored",
+      "implementation": "本文件为虚构方案演练，不包含真实问卷或真实使用效果。",
+      "feature_ids": []
+    },
+    {
+      "evidence_id": "E013",
+      "treatment": "honored",
+      "implementation": "使用站内入口和可复制链接，暂不实现聊天工具接入。",
+      "feature_ids": [
+        "F1",
+        "F4"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "claim": "五份有效回答作为最小聚合阈值是待测试设计，不能保证完全匿名；首版不提供自由文本和组织细分。",
+      "validation": "用不同团队规模的虚构回答检查小样本和差分重识别风险；再由隐私负责人审阅阈值、留存和访问规则。",
+      "impact": "high"
+    },
+    {
+      "id": "A2",
+      "claim": "三周数据中的连续两次下降值得形成候选提醒。",
+      "validation": "在历史模拟数据中统计提醒量和重复量，试用时由负责人逐条标记是否有行动价值。",
+      "impact": "medium"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "M1",
+      "name": "首周问卷完成率",
+      "kind": "outcome",
+      "definition": "首周提交有效问卷的人数 / 首周受邀参与人数。",
+      "baseline": null,
+      "target": "达到 70%",
+      "target_status": "provided",
+      "collection": "以受邀总数和去重后的提交数计算，仅保存团队级汇总。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E014",
+            "quote": "- 试用团队首周问卷完成率达到 70%。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "id": "M2",
+      "name": "行动创建",
+      "kind": "outcome",
+      "definition": "团队试用四周内从报告创建的改进行动数，不作为改善效果的替代指标。",
+      "baseline": null,
+      "target": "4 周内至少创建 1 条改进行动。",
+      "target_status": "provided",
+      "collection": "记录 action_created 事件，复盘另行记录是否改善。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E016",
+            "quote": "- 4 周内至少创建 1 条改进行动。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "id": "M3",
+      "name": "小样本泄露",
+      "kind": "guardrail",
+      "definition": "未达到最小样本量的报告、导出或接口返回了维度分布的次数。",
+      "baseline": null,
+      "target": "验收样例中为 0",
+      "target_status": "proposed",
+      "collection": "用四人、五人和缺失周的虚构样例覆盖页面、接口与导出。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E007",
+            "quote": "- 团队成员担心反馈被追溯到个人，因此不愿意说真实问题。"
+          }
+        ],
+        "assumption_ids": [
+          "A1"
+        ]
+      }
+    }
+  ],
+  "out_of_scope": [
+    {
+      "item": "复杂组织架构和跨团队排名",
+      "reason": "首版只证明一个团队的反馈到行动闭环，也避免额外细分带来的隐私风险。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E011",
+            "quote": "- MVP 只支持单团队，不做复杂组织架构。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "item": "真实聊天工具接入",
+      "reason": "当前约束不要求，先验证主要工作流。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E013",
+            "quote": "- 不要求接入真实聊天工具。"
+          }
+        ],
+        "assumption_ids": []
+      }
+    },
+    {
+      "item": "AI 自动执行团队行动",
+      "reason": "建议可能误判团队情境，先由负责人选择和复盘。",
+      "basis": {
+        "evidence_refs": [
+          {
+            "id": "E006",
+            "quote": "- 现有问卷工具能收集反馈，但很难自动沉淀趋势和行动建议。"
+          }
+        ],
+        "assumption_ids": [
+          "A2"
+        ]
+      }
+    }
+  ],
+  "open_questions": [
+    "谁负责创建和维护受邀人数，如何降低重复回答而不向负责人暴露身份？",
+    "在更换成员或组织调整后，哪些周度数据仍可比较？",
+    "问卷答案的保留期限、删除方式和访问权限由谁审核？"
+  ],
+  "rollout": [
+    {
+      "name": "先验证反馈到行动",
+      "feature_ids": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "exit_criteria": [
+        "虚构四人和五人样本的权限、抑制与导出验收通过。",
+        "负责人能够从报告创建行动，并记录一次无改善的复盘。",
+        "试用前明确受邀人数、去重机制与数据留存规则。"
+      ]
+    },
+    {
+      "name": "再验证提醒价值",
+      "feature_ids": [
+        "F4"
+      ],
+      "exit_criteria": [
+        "已有三周可比较数据。",
+        "提醒去重和样本不足用例通过，试用负责人能标记每条提醒的行动价值。"
+      ]
+    }
+  ]
+}

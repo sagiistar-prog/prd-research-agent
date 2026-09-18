@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>__TITLE__ - PRD 评审</title>
+<style>__STYLE__</style>
+</head>
+<body>
+<!-- THESIS: Review each feature against its source before committing scope.
+OWN-WORLD: Cool gray workspace, white reading plane, blue actions, native disclosure rows.
+STORY: Read the objective, inspect MVP tradeoffs, trace a quote, export the review.
+FIRST VIEWPORT: Narrow left navigation; product heading and export above a filtered feature list; all content readable without animation.
+FORM: Source-annotated review brief, grounded candidate 3, seed 29ed4d20; user-pinned minimal gray and blue direction; code-led local document.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->
+<a class="skip" href="#main">跳到评审内容</a>
+<header><a class="brand" href="#main">PRD 评审</a><span id="state">待人工评审</span></header>
+<div class="workspace">
+<aside><nav aria-label="评审导航">
+<button data-panel="scope" aria-controls="scope" aria-current="page">功能范围</button>
+<button data-panel="planning" aria-controls="planning">规划与指标</button>
+<button data-panel="decisions" aria-controls="decisions">待确认</button>
+<button data-panel="evidence" aria-controls="evidence">输入依据</button>
+</nav><p class="aside-note">保留每项选择的理由。</p></aside>
+<main id="main" tabindex="-1">
+<div class="intro"><div><h1 id="title"></h1><p id="objective"></p></div><button class="primary" id="download">下载 PRD</button></div>
+<p id="notice" class="notice"></p>
+<section id="scope" aria-labelledby="scope-title"><h2 id="scope-title">功能范围</h2>
+<div class="toolbar"><label>版本范围<select id="scope-filter"><option value="all">全部功能</option><option value="mvp">MVP</option><option value="later">后续版本</option></select></label><label class="search">查找功能<input id="search" type="search" placeholder="功能名称或取舍理由"></label><p id="count" aria-live="polite"></p></div>
+<div id="feature-list"></div><p id="empty" hidden>没有符合条件的功能。清空搜索或切换版本范围后再试。</p>
+<button class="secondary" id="download-backlog">下载功能清单</button>
+</section>
+<section id="planning" aria-labelledby="planning-title" hidden><h2 id="planning-title">规划与指标</h2><div id="plan-content"></div></section>
+<section id="decisions" aria-labelledby="decisions-title" hidden><h2 id="decisions-title">待确认</h2><div id="decision-content"></div></section>
+<section id="evidence" aria-labelledby="evidence-title" hidden><div class="evidence-heading"><h2 id="evidence-title">输入依据</h2><button id="return-feature" hidden>返回评审</button></div><p class="muted">这些记录来自输入资料，尚未独立核实。</p><div id="evidence-list"></div><details><summary>原始需求</summary><pre id="raw-brief"></pre></details></section>
+<p class="footer-note">引用校验只检查结构与原文一致性，方案仍需人工评审。</p>
+</main></div>
+<noscript><p>此评审页需要启用 JavaScript。你也可以阅读同一文件夹中的 result.md。</p></noscript>
+<script type="application/json" id="review-data">__DATA__</script>
+<script>__SCRIPT__</script>
+</body></html>

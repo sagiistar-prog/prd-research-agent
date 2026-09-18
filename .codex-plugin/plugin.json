@@ -1,7 +1,7 @@
 {
   "name": "prd-research-agent",
-  "version": "0.2.0",
-  "description": "把模糊需求整理成可复核的 PRD 初稿",
+  "version": "0.3.0",
+  "description": "从原始依据到可追溯、可验收的产品方案",
   "author": {
     "name": "Oscar Qi",
     "url": "https://github.com/sagiistar-prog"
@@ -11,8 +11,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "PRD Research Agent",
-    "shortDescription": "把模糊需求整理成可复核的 PRD 初稿",
-    "longDescription": "把模糊需求整理成可复核的 PRD 初稿。确定性模板草稿；不调用模型，不执行联网调研。优先级与功能建议需要人工确认，不能作为真实市场结论。",
+    "shortDescription": "从原始依据到可追溯、可验收的产品方案",
+    "longDescription": "宿主 AI 或产品负责人规划功能与取舍，本地工具校验原文引用、约束和依赖，输出 PRD、backlog 和可离线打开的评审页。引用通过仍需人工语义评审。",
     "developerName": "Oscar Qi",
     "category": "Productivity",
     "capabilities": [
@@ -20,7 +20,7 @@
       "Write"
     ],
     "defaultPrompt": [
-      "把模糊需求整理成可复核的 PRD 初稿，先使用仓库内的虚构样例。"
+      "用原始需求和明确假设制定首版方案，引用原文并生成可评审的 PRD。"
     ]
   }
 }

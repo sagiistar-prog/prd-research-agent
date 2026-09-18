@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-18T07:51:45.132Z",
+  "title": "Design System: PRD Review",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Workspace gray",
+        "tonalRamp": [
+          "oklch(15% 0.00576 264.53)",
+          "oklch(25% 0.00576 264.53)",
+          "oklch(35% 0.00576 264.53)",
+          "oklch(45% 0.00576 264.53)",
+          "oklch(55% 0.00576 264.53)",
+          "oklch(65% 0.00576 264.53)",
+          "oklch(80% 0.00576 264.53)",
+          "oklch(95% 0.00576 264.53)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Reading white",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(25% 0.00000 0.00)",
+          "oklch(35% 0.00000 0.00)",
+          "oklch(45% 0.00000 0.00)",
+          "oklch(55% 0.00000 0.00)",
+          "oklch(65% 0.00000 0.00)",
+          "oklch(80% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Reading ink",
+        "tonalRamp": [
+          "oklch(15% 0.02668 260.02)",
+          "oklch(25% 0.02668 260.02)",
+          "oklch(35% 0.02668 260.02)",
+          "oklch(45% 0.02668 260.02)",
+          "oklch(55% 0.02668 260.02)",
+          "oklch(65% 0.02668 260.02)",
+          "oklch(80% 0.02668 260.02)",
+          "oklch(95% 0.02668 260.02)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Supporting slate",
+        "tonalRamp": [
+          "oklch(15% 0.03234 258.37)",
+          "oklch(25% 0.03234 258.37)",
+          "oklch(35% 0.03234 258.37)",
+          "oklch(45% 0.03234 258.37)",
+          "oklch(55% 0.03234 258.37)",
+          "oklch(65% 0.03234 258.37)",
+          "oklch(80% 0.03234 258.37)",
+          "oklch(95% 0.03234 258.37)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Divider gray",
+        "tonalRamp": [
+          "oklch(15% 0.01445 254.61)",
+          "oklch(25% 0.01445 254.61)",
+          "oklch(35% 0.01445 254.61)",
+          "oklch(45% 0.01445 254.61)",
+          "oklch(55% 0.01445 254.61)",
+          "oklch(65% 0.01445 254.61)",
+          "oklch(80% 0.01445 254.61)",
+          "oklch(95% 0.01445 254.61)"
+        ]
+      },
+      "blue": {
+        "role": "primary",
+        "displayName": "Review blue",
+        "tonalRamp": [
+          "oklch(15% 0.16992 264.29)",
+          "oklch(25% 0.16992 264.29)",
+          "oklch(35% 0.16992 264.29)",
+          "oklch(45% 0.16992 264.29)",
+          "oklch(55% 0.16992 264.29)",
+          "oklch(65% 0.16992 264.29)",
+          "oklch(80% 0.16992 264.29)",
+          "oklch(95% 0.16992 264.29)"
+        ]
+      },
+      "selected": {
+        "role": "primary",
+        "displayName": "Selection wash",
+        "tonalRamp": [
+          "oklch(15% 0.01864 265.98)",
+          "oklch(25% 0.01864 265.98)",
+          "oklch(35% 0.01864 265.98)",
+          "oklch(45% 0.01864 265.98)",
+          "oklch(55% 0.01864 265.98)",
+          "oklch(65% 0.01864 265.98)",
+          "oklch(80% 0.01864 265.98)",
+          "oklch(95% 0.01864 265.98)"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Keyboard focus blue",
+        "tonalRamp": [
+          "oklch(15% 0.18744 262.83)",
+          "oklch(25% 0.18744 262.83)",
+          "oklch(35% 0.18744 262.83)",
+          "oklch(45% 0.18744 262.83)",
+          "oklch(55% 0.18744 262.83)",
+          "oklch(65% 0.18744 262.83)",
+          "oklch(80% 0.18744 262.83)",
+          "oklch(95% 0.18744 262.83)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Product headline",
+        "purpose": "Product name; 24px at the mobile breakpoint."
+      },
+      "section": {
+        "displayName": "Section heading",
+        "purpose": "Current review panel heading."
+      },
+      "title": {
+        "displayName": "Content title",
+        "purpose": "Feature names, planning blocks, and source identifiers."
+      },
+      "body": {
+        "displayName": "Reading text",
+        "purpose": "Continuous Chinese text, quotations, controls, and raw requirements."
+      },
+      "label": {
+        "displayName": "Supporting label",
+        "purpose": "Labels, supporting text, live result count, and source actions."
+      },
+      "note": {
+        "displayName": "Compact note",
+        "purpose": "Footer, navigation note, and plain feature metadata."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "button-color",
+        "value": "background-color 160ms ease-out",
+        "purpose": "Button background states only."
+      },
+      {
+        "name": "evidence-highlight",
+        "value": "background-color 180ms ease-out",
+        "purpose": "Selected evidence record; the class owns the transition."
+      },
+      {
+        "name": "source-navigation",
+        "value": "instant",
+        "purpose": "Explicit scrollIntoView and saved scroll restoration in review.js."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none !important; scroll-behavior: auto !important",
+        "purpose": "Applied to all elements and pseudo-elements when prefers-reduced-motion is reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary download",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary local Markdown export. The mobile presentation fills its container.",
+      "html": "<button class=\"ds-button ds-primary\">下载 PRD</button>",
+      "css": ".ds-button{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;padding:9px 16px;border:1px solid var(--line,#d8dfe8);background:var(--paper,#fff);border-radius:var(--radius,8px);cursor:pointer;transition:background-color 160ms ease-out}.ds-button:hover{background:#edf1f8}.ds-button:active{background:#e0e8f5}.ds-button:disabled{cursor:default;color:#697485;background:#e9edf3}.ds-button:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-button{transition:none!important;scroll-behavior:auto!important}}.ds-primary{background:var(--blue,#264fb6);color:white;border-color:var(--blue,#264fb6);white-space:nowrap}.ds-primary:hover{background:#1a3f9e}@media(max-width:760px){.ds-primary{margin-top:18px;width:100%}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Neutral action used for backlog export and contextual return. Disabled treatment is a resting CSS state.",
+      "html": "<button class=\"ds-secondary\">下载功能清单</button>",
+      "css": ".ds-secondary{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;padding:9px 16px;border:1px solid var(--line,#d8dfe8);background:var(--paper,#fff);border-radius:var(--radius,8px);cursor:pointer;transition:background-color 160ms ease-out}.ds-secondary:hover{background:#edf1f8}.ds-secondary:active{background:#e0e8f5}.ds-secondary:disabled{cursor:default;color:#697485;background:#e9edf3}.ds-secondary:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none!important;scroll-behavior:auto!important}}.ds-secondary{margin-top:28px}"
+    },
+    {
+      "name": "Source reference",
+      "kind": "button",
+      "refersTo": "source-reference",
+      "description": "Evidence identifier action with the same minimum target height as other buttons. The preview has no source-navigation script.",
+      "html": "<button class=\"ds-source\" aria-label=\"查看依据 E007\">E007</button>",
+      "css": ".ds-source{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;padding:9px 16px;border:1px solid var(--line,#d8dfe8);background:var(--paper,#fff);border-radius:var(--radius,8px);cursor:pointer;transition:background-color 160ms ease-out}.ds-source:hover{background:#edf1f8}.ds-source:active{background:#e0e8f5}.ds-source:disabled{cursor:default;color:#697485;background:#e9edf3}.ds-source:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-source{transition:none!important;scroll-behavior:auto!important}}.ds-source{color:var(--blue,#264fb6);padding:6px 12px;font-size:14px}"
+    },
+    {
+      "name": "Search field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Native search input with a visible label. Only global focus is customized; no separate hover or error field treatment exists.",
+      "html": "<label class=\"ds-search-label\">查找功能<input class=\"ds-search\" type=\"search\" placeholder=\"功能名称或取舍理由\"></label>",
+      "css": ".ds-search-label{display:grid;gap:6px;font:14px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--muted,#596577);min-width:160px;max-width:340px}.ds-search{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;border:1px solid #b4bfd0;border-radius:6px;background:white;padding:8px 12px;caret-color:var(--blue,#264fb6);max-width:100%}.ds-search:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}.ds-search::placeholder{color:#687487}@media(max-width:760px){.ds-search-label{min-width:150px}}"
+    },
+    {
+      "name": "Scope select",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Native scope selector; the operating system supplies the option menu and native hover behavior.",
+      "html": "<label class=\"ds-scope-label\">版本范围<select class=\"ds-scope\"><option value=\"all\">全部功能</option><option value=\"mvp\">MVP</option><option value=\"later\">后续版本</option></select></label>",
+      "css": ".ds-scope-label{display:grid;gap:6px;font:14px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--muted,#596577)}.ds-scope{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;border:1px solid #b4bfd0;border-radius:6px;background:white;padding:8px 12px;caret-color:var(--blue,#264fb6);max-width:100%}.ds-scope:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}.ds-scope{cursor:pointer}"
+    },
+    {
+      "name": "Review navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Panel navigation with a current-page wash and weight. This snippet previews appearance only; renderer JavaScript switches the panels.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"评审导航\"><button class=\"ds-nav-button\" aria-current=\"page\">功能范围</button><button class=\"ds-nav-button\">规划与指标</button><button class=\"ds-nav-button\">待确认</button><button class=\"ds-nav-button\">输入依据</button></nav>",
+      "css": ".ds-nav-button{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;padding:9px 16px;border:1px solid var(--line,#d8dfe8);background:var(--paper,#fff);border-radius:var(--radius,8px);cursor:pointer;transition:background-color 160ms ease-out}.ds-nav-button:hover{background:#edf1f8}.ds-nav-button:active{background:#e0e8f5}.ds-nav-button:disabled{cursor:default;color:#697485;background:#e9edf3}.ds-nav-button:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-nav-button{transition:none!important;scroll-behavior:auto!important}}.ds-nav{display:grid;gap:6px}.ds-nav-button{text-align:left;background:transparent;border-color:transparent}.ds-nav-button[aria-current=\"page\"]{color:#244796;background:var(--selected,#e9effc);font-weight:650}@media(max-width:760px){.ds-nav{display:flex;gap:4px;flex-wrap:wrap}.ds-nav .ds-nav-button{padding:9px 12px;font-size:14px}}"
+    },
+    {
+      "name": "Scope and priority label",
+      "kind": "chip",
+      "description": "Plain noninteractive metadata rather than a filled chip. No hover, focus, or click state.",
+      "html": "<span class=\"ds-tag\">MVP / 必须</span>",
+      "css": ".ds-tag{font:13px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:#485e84;white-space:nowrap}"
+    },
+    {
+      "name": "Feature row",
+      "kind": "card",
+      "refersTo": "feature-row",
+      "description": "An unboxed reading article, separated by a top rule. Example content is fictional and illustrates hierarchy only.",
+      "html": "<article class=\"ds-feature\"><div class=\"ds-feature-head\"><h3 class=\"ds-feature-title\">示例功能</h3><span class=\"ds-feature-tag\">MVP / 必须</span></div><p class=\"ds-feature-rationale\">先明确用户问题，再确定本轮功能范围。</p><p class=\"ds-feature-problem\">用户问题：需要看清每项选择的理由。</p></article>",
+      "css": ".ds-feature{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);background:var(--paper,#fff);padding:24px 0;border-top:1px solid var(--line,#d8dfe8)}.ds-feature-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline}.ds-feature-title{font-size:17px;line-height:1.6;margin:0 0 8px;overflow-wrap:anywhere}.ds-feature-tag{font-size:13px;color:#485e84;white-space:nowrap}.ds-feature-rationale,.ds-feature-problem{margin:8px 0;max-width:75ch;overflow-wrap:anywhere}.ds-feature-problem{color:var(--muted,#596577);font-size:14px}@media(max-width:760px){.ds-feature-head{display:block}.ds-feature-tag{display:block;margin-bottom:8px}}"
+    },
+    {
+      "name": "Native disclosure",
+      "kind": "custom",
+      "description": "Expandable subfeatures and acceptance conditions. Open state uses native details behavior without an animation or hover decoration.",
+      "html": "<details class=\"ds-details\"><summary class=\"ds-summary\">子功能与验收条件</summary><div class=\"ds-fact\"><strong class=\"ds-fact-name\">示例子功能</strong><p class=\"ds-fact-description\">展示功能的具体行为和验收条件。</p></div></details>",
+      "css": ".ds-details{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);border-top:1px solid var(--line,#d8dfe8);margin-top:18px}.ds-summary{cursor:pointer;min-height:48px;padding:12px 0;color:var(--blue,#264fb6);width:fit-content}.ds-summary:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}.ds-details[open]{padding-bottom:8px}.ds-fact{margin:18px 0}.ds-fact-name{display:block}.ds-fact-description{margin:8px 0;max-width:75ch;overflow-wrap:anywhere}"
+    },
+    {
+      "name": "Traced evidence with contextual return",
+      "kind": "custom",
+      "refersTo": "evidence-record-highlight",
+      "description": "Highlighted source record with its nearby return action. Actual source and return focus/scroll behavior is implemented in review.js, not this static preview.",
+      "html": "<article class=\"ds-evidence ds-highlight\" tabindex=\"-1\"><button class=\"ds-return\">返回评审</button><h3 class=\"ds-evidence-title\">E016</h3><p class=\"ds-evidence-meta\">需求原文 / 第 31 行</p><blockquote class=\"ds-quote\">示例引用：保留当前功能的选择理由。</blockquote></article>",
+      "css": ".ds-return{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);min-height:44px;padding:9px 16px;border:1px solid var(--line,#d8dfe8);background:var(--paper,#fff);border-radius:var(--radius,8px);cursor:pointer;transition:background-color 160ms ease-out}.ds-return:hover{background:#edf1f8}.ds-return:active{background:#e0e8f5}.ds-return:disabled{cursor:default;color:#697485;background:#e9edf3}.ds-return:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-return{transition:none!important;scroll-behavior:auto!important}}.ds-evidence{font:16px/1.7 system-ui,-apple-system,\"Segoe UI\",\"Microsoft YaHei\",sans-serif;color:var(--ink,#212936);padding:22px 12px;border-top:1px solid var(--line,#d8dfe8);scroll-margin-top:24px}.ds-evidence.ds-highlight{background:var(--selected,#e9effc);transition:background-color 180ms ease-out}.ds-evidence .ds-return{margin-bottom:16px}.ds-evidence-title{font-size:17px;line-height:1.6;margin:0 0 10px}.ds-evidence-meta{margin:8px 0;color:var(--muted,#596577);font-size:14px;max-width:75ch;overflow-wrap:anywhere}.ds-quote{border:0;padding:0;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-width:75ch}.ds-evidence:focus-visible{outline:3px solid var(--focus,#174bbd);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-evidence.ds-highlight{transition:none!important;scroll-behavior:auto!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Source-annotated review brief",
+    "overview": "The implemented interface uses a cool gray workspace, a white reading plane, and blue actions. Its character comes from readable Chinese text, visible reasoning, fine dividers, and native disclosure rows. Review controls stay close to the content they affect.\n\nThis is a scan of the generic review renderer, not a visual identity for a fictional example product. The built HTML, CSS, and JavaScript are the visual authority; there is no approved image comp. The implemented palette is gray and blue. The broader palette preference did not result in a purple token.",
+    "keyCharacteristics": [
+      "Flat surfaces separated by tone and thin rules.",
+      "A compact type hierarchy with generous line height for continuous reading.",
+      "Plain metadata and source buttons within unboxed content rows.",
+      "Native inputs and disclosures with visible keyboard focus.",
+      "Content visible immediately, with restrained color transitions."
+    ],
+    "rules": [
+      {
+        "name": "The Action Color Rule",
+        "body": "Keep blue attached to a meaningful action, selection, or focus state. The interface does not assign arbitrary colors to feature priorities.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Preserve the distinction between the reading plane and its workspace through tone and rules rather than decorative elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Context Return Rule",
+        "body": "A traced quotation keeps its return action beside the quotation, and return preserves the reader's previous place.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** retain gray workspace, white reading surface, blue actions, and thin structural dividers.",
+      "**Do** use plain scope and priority text so meaning remains readable without color.",
+      "**Do** keep source references, exact quotations, and contextual return behavior connected.",
+      "**Do** preserve visible keyboard focus, native controls, and the reduced-motion override.",
+      "**Do** use the implemented wrapping layout and readable text measure when extending this renderer."
+    ],
+    "donts": [
+      "**Don't** turn each feature into a raised or rounded card.",
+      "**Don't** add a middle-dot separator; current labels use a slash, Chinese punctuation, or natural spacing.",
+      "**Don't** add palette tokens or semantic color meanings that the implementation does not establish.",
+      "**Don't** imply that a traceable source or a structural check establishes factual validity or product approval.",
+      "**Don't** treat the sidecar's illustrative tonal ramps or static component previews as additional implemented states."
+    ]
+  }
+}

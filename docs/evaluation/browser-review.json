@@ -1,0 +1,84 @@
+[
+  {
+    "width": 1440,
+    "axe": [
+      {
+        "panel": "scope",
+        "violations": 0
+      },
+      {
+        "panel": "planning",
+        "violations": 0
+      },
+      {
+        "panel": "decisions",
+        "violations": 0
+      },
+      {
+        "panel": "evidence",
+        "violations": 0
+      }
+    ],
+    "scriptErrors": 0,
+    "overflow": false,
+    "downloadsMatch": true,
+    "sourceRoundTrip": true,
+    "returnVisibility": [
+      {
+        "sourceId": "E007",
+        "visible": true,
+        "forwardKeyboard": true,
+        "filterAndDisclosurePreserved": true,
+        "scrollRestored": true
+      },
+      {
+        "sourceId": "E016",
+        "visible": true,
+        "forwardKeyboard": true,
+        "filterAndDisclosurePreserved": true,
+        "scrollRestored": true
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "axe": [
+      {
+        "panel": "scope",
+        "violations": 0
+      },
+      {
+        "panel": "planning",
+        "violations": 0
+      },
+      {
+        "panel": "decisions",
+        "violations": 0
+      },
+      {
+        "panel": "evidence",
+        "violations": 0
+      }
+    ],
+    "scriptErrors": 0,
+    "overflow": false,
+    "downloadsMatch": true,
+    "sourceRoundTrip": true,
+    "returnVisibility": [
+      {
+        "sourceId": "E007",
+        "visible": true,
+        "forwardKeyboard": true,
+        "filterAndDisclosurePreserved": true,
+        "scrollRestored": true
+      },
+      {
+        "sourceId": "E016",
+        "visible": true,
+        "forwardKeyboard": true,
+        "filterAndDisclosurePreserved": true,
+        "scrollRestored": true
+      }
+    ]
+  }
+]

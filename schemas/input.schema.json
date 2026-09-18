@@ -1,22 +1,35 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "PRD Research Agent input",
   "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requirement_markdown"
+  ],
   "properties": {
     "requirement_markdown": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 30000
+      "maxLength": 30000,
+      "pattern": "\\S"
     },
     "competitors": {
       "type": "array",
-      "maxItems": 30,
       "items": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "positioning",
+          "strengths",
+          "weaknesses",
+          "pricing",
+          "target_user"
+        ],
         "properties": {
           "name": {
             "type": "string",
-            "maxLength": 3000
+            "minLength": 1,
+            "maxLength": 3000,
+            "pattern": "\\S"
           },
           "positioning": {
             "type": "string",
@@ -38,21 +51,14 @@
             "type": "string",
             "maxLength": 3000
           }
-        },
-        "required": [
-          "name",
-          "positioning",
-          "strengths",
-          "weaknesses",
-          "pricing",
-          "target_user"
-        ],
-        "additionalProperties": false
-      }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 30
+    },
+    "product_plan": {
+      "type": "object"
     }
   },
-  "required": [
-    "requirement_markdown"
-  ],
-  "additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

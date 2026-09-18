@@ -4,9 +4,10 @@
 from __future__ import annotations
 
 import argparse
-import csv
 from pathlib import Path
 from typing import Dict, Iterable, List
+from requirements_analysis import load_competitors
+from prd_renderer import md
 
 
 REQUIRED_COLUMNS = [
@@ -19,15 +20,6 @@ REQUIRED_COLUMNS = [
 ]
 
 
-def load_competitors(path: Path) -> List[Dict[str, str]]:
-    with path.open("r", encoding="utf-8-sig", newline="") as file:
-        reader = csv.DictReader(file)
-        missing = [column for column in REQUIRED_COLUMNS if column not in (reader.fieldnames or [])]
-        if missing:
-            raise ValueError(f"Missing competitor columns: {', '.join(missing)}")
-        return [{key: (row.get(key) or "").strip() for key in REQUIRED_COLUMNS} for row in reader]
-
-
 def markdown_table(rows: Iterable[Dict[str, str]]) -> str:
     lines = [
         "| 竞品 | 定位 | 优势 | 短板 | 定价 | 目标用户 |",
@@ -36,7 +28,7 @@ def markdown_table(rows: Iterable[Dict[str, str]]) -> str:
     for row in rows:
         lines.append(
             "| {name} | {positioning} | {strengths} | {weaknesses} | {pricing} | {target_user} |".format(
-                **{key: row.get(key, "").replace("|", "/") for key in REQUIRED_COLUMNS}
+                **{key: md(row.get(key, "")) for key in REQUIRED_COLUMNS}
             )
         )
     return "\n".join(lines)
@@ -50,7 +42,7 @@ def opportunity_notes(rows: List[Dict[str, str]]) -> str:
     if not weaknesses:
         return "竞品短板信息不足，建议补充定性访谈或公开资料。"
 
-    notes = [f"- 输入样本 {row.get('name', '未命名')} 的短板：{row['weaknesses']}。待验证：该问题是否影响目标用户的核心任务；未独立核实。" for row in rows if row.get("weaknesses")]
+    notes = [f"- 输入样本 {md(row.get('name', '未命名'))} 的短板：{md(row['weaknesses'])}。待验证：该问题是否影响目标用户的核心任务；未独立核实。" for row in rows if row.get("weaknesses")]
     return "\n".join(notes)
 
 

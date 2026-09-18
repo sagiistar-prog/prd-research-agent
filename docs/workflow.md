@@ -1,48 +1,21 @@
-# Workflow
+# 从需求到评审
 
-PRD Research Agent follows a product-management workflow rather than a pure text-generation workflow.
-
-## 1. Input Intake
-
-The agent accepts a short Markdown requirement. It extracts product name, target users, current problems, core scenarios, constraints, and success metrics.
-
-## 2. Requirement Clarification
-
-The agent turns missing information into explicit clarification questions, such as:
-
-- Which user segment is the first MVP segment?
-- Which workflow happens weekly, daily, or only on demand?
-- Which data must be visible, aggregated, or hidden?
-- Which integrations are required now, later, or not at all?
-
-## 3. User Scenario Analysis
-
-The agent maps users to jobs, triggers, pains, expected outcomes, and product moments. This keeps the PRD grounded in behavior rather than feature wish lists.
-
-## 4. Market and Competitor Scan
-
-In Safe Demo mode, the competitor scan uses a local CSV with fictional competitors. A production version could replace this step with a reviewed research source, but public portfolio examples should remain anonymized.
-
-## 5. Functional Scope
-
-The PRD uses a feature-tree structure:
-
-```text
-xxx 产品有 A/B/C/D 功能。
-A 功能下包含 A1/A2/A3 子功能。
+```mermaid
+flowchart LR
+  A[原始需求与可选竞品] --> B[原文记录与输入指纹]
+  B --> C[宿主 AI 或产品负责人规划]
+  C --> D[计划 JSON]
+  D --> E[结构与引用校验]
+  E --> F[PRD / Backlog / 本地评审页]
+  F --> G[人工语义评审]
+  G --> H[产品实现与用户验证]
 ```
 
-This format is easy for product, design, engineering, and QA to discuss together.
+1. 读取原文，识别用户的任务和失败成本。没有独立标题的自然段也可能已经给出了足够资料。
+2. 运行插件获取 evidence 和 analysis_id；没有计划时交付资料梳理。
+3. 宿主或人作出范围、优先级和假设判断，按方案契约写 JSON。
+4. 校验引用、指纹、依赖和约束；错误在输出目录创建前返回。
+5. 在评审页筛选 MVP、展开验收、点击依据回看原文；下载一致的 Markdown 和 backlog。
+6. 产品负责人判断推论是否有意义，未验证的假设进入验证计划。后续开发和用户研究不包含在脚本的成功状态里。
 
-## 6. Prioritization
-
-The first version uses MoSCoW:
-
-- Must: required for the MVP promise.
-- Should: important, but can wait if timing is tight.
-- Could: useful for later differentiation.
-- Won't: consciously excluded from the current version.
-
-## 7. Development-Ready Output
-
-The final PRD draft includes user stories, acceptance criteria, risks, open questions, metrics, and milestones.
+本地执行没有等待中的远程生成，因此不模拟“AI 思考”动画。加载完成即展示内容，状态变化使用简短的选择和高亮反馈。

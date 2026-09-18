@@ -1,10 +1,14 @@
 {
   "scope": "portfolio implementation, not customer outcomes",
   "product_definition": "docs/product-case.md",
-  "interaction": "examples/plugin-input.json",
-  "implementation": "scripts/plugin_run.py",
+  "interaction": "assets/review/index.html",
+  "implementation": "scripts/requirements_analysis.py",
   "measurement_contract": "docs/metrics.schema.json",
   "user_validation": "planned, not conducted",
   "production_outcomes": "not measured",
-  "upstream_credit": "docs/open-source.md"
+  "upstream_credit": "docs/open-source.md",
+  "host_skill": "skills/prd-research-agent/SKILL.md",
+  "decision_contract": "schemas/plan.schema.json",
+  "independent_case": "examples/fitcheck-plan.json",
+  "technical_validation": "docs/evidence-review-acceptance.md"
 }

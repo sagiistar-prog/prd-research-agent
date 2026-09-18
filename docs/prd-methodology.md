@@ -1,50 +1,11 @@
-# PRD Methodology
+# 产品定义方法
 
-This project treats PRD writing as a chain of product decisions.
+从用户想完成的任务出发，再讨论功能。每个问题关联具体角色，每个功能关联问题，每个故事的角色必须来自该问题的用户集合。
 
-## PRD Shape
+优先级由方案作者说明理由：为什么对闭环必要、若不做会怎样、有何更便宜的替代、依赖什么、哪些判断不确定。must/should/could 是评审语言，不是脚本自动评分。MVP 与后续范围分开，MVP 不得依赖后续功能。
 
-The preferred format is:
+每个子功能解释实际行为，不要求固定数量。验收写明前提、触发和可观察结果，覆盖业务相关的错误和空结果。代码校验字段完整，不会自动判定“清晰”“准确”等措辞是否可测试。
 
-```text
-xxx 产品有 xxx/xxx/xxx/xxx/xxx 功能。
-每个功能下面列出子功能、用户故事、验收标准和优先级。
-```
+依据与假设分开。精确引用只证明这段话存在；它可能是虚构示例、输入的竞品观点或未经验证的用户猜测。指标基线未知就为 null，建议目标不可标成真实输入目标或已取得效果。
 
-This structure creates a shared map for product managers, designers, engineers, and testers.
-
-## Required Questions
-
-Before writing the PRD, the agent asks:
-
-- Who has the problem first?
-- What event triggers the need?
-- What does the user do today?
-- What would make the user trust the product?
-- What is inside the MVP, and what is intentionally excluded?
-- How will the team know whether the release worked?
-
-## Feature Tree
-
-Each top-level feature should be:
-
-- Outcome-based, not implementation-based.
-- Small enough to discuss in one product review.
-- Clear enough for engineering decomposition.
-- Testable through acceptance criteria.
-
-## Prioritization
-
-The demo uses MoSCoW because it is readable in interviews and works well for early scoping. In production, the scoring layer could be replaced with RICE, opportunity scoring, Kano, or a revenue-weighted model.
-
-## Acceptance Criteria
-
-Acceptance criteria use a Gherkin-like style:
-
-```text
-Given a specific state
-When the user takes an action
-Then the product produces an observable result
-```
-
-The point is not ceremony. The point is to remove ambiguity before development starts.
+里程碑使用退出条件，不自动承诺四周交付。实现、用户试用和生产验收是后续工作，不能由结构通过替代。

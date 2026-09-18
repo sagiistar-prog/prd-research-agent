@@ -1,50 +1,13 @@
-# Safe Demo
+# 离线演示
 
-Safe Demo proves the project can run without private data or external services.
+仓库示例全部为虚构资料，不含真实用户反馈或业务结果。安装 Python 依赖后，演示无需网络或模型密钥。
 
-## Command
+保留原命令：
 
 ```bash
 python scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
 ```
 
-Windows 兼容命令：
+它写出资料梳理。要生成完整 PRD，显式加 `--plan examples/team-pulse-plan.json`。交互版本使用 README 中的 plugin_run 命令，输出到新的 output 子目录。
 
-```powershell
-py -3 scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
-```
-
-## Expected Result
-
-The command writes:
-
-```text
-examples/generated_prd.md
-```
-
-The generated PRD should include:
-
-- Requirement summary
-- Clarification questions
-- User scenarios
-- Competitor matrix
-- Feature overview sentence
-- Feature tree with subfeatures
-- Prioritization
-- User stories
-- Acceptance criteria
-- Risks and milestones
-
-## Why `--dry-run` Still Writes a File
-
-In this project, dry-run means safe offline generation. It disables external calls and uses deterministic local logic, but it still writes the demo artifact so interviewers can reproduce the result with one command.
-
-## Audit
-
-Run the audit after generating the PRD:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/portfolio_audit.ps1
-```
-
-The audit checks required files, common sensitive-info patterns, large files, generated demo output, and GitHub visibility when a remote repository is configured.
+不要将“成功生成”解释为已经验证商业价值。真实产品的实现与本地 PRD 工具的技术验收是两件不同的工作。
