@@ -43,3 +43,7 @@ powershell -ExecutionPolicy Bypass -File scripts/portfolio_audit.ps1
 浏览器脚本重新生成测试页面，保存 output/browser-check/acceptance.json 和忽略目录中的截图。CI 上传这些浏览器证据。已有 Chrome 可设置 BROWSER_CHANNEL=chrome；PYTHON 可指定独立环境。
 
 未验证：真实 PM 的任务效率、引用对决策的语义支持、行业知识正确性、客户收益、生产多人协作及任意新领域的普遍适用性。没有把这些项目计作通过。
+
+## CI 环境修复
+
+首个远程提交的功能与浏览器检查通过，Windows 审计因 GitHub CLI 缺少只读凭据中断。工作流补充只读权限和运行时 GH_TOKEN；本地缺少登录时仅提示未核实仓库可见性，继续文件审计。审计改为检查 Git 已跟踪与未忽略的新文件，并覆盖 JSON、HTML 和脚本，避免扫描依赖及临时输出。用未跟踪的虚构电话号码探针确认仍会拒绝，探针随后删除。

@@ -1,5 +1,7 @@
 name: Offline quality checks
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   plugin:
     runs-on: ubuntu-latest
@@ -33,4 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - shell: powershell
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: ./scripts/portfolio_audit.ps1

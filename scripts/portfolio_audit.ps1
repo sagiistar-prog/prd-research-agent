@@ -86,12 +86,17 @@ if (Test-Path -LiteralPath $generatedPrdPath) {
     }
 }
 
-$allFiles = Get-ChildItem -LiteralPath $RepoRoot -Recurse -File -Force |
-    Where-Object {
-        $_.FullName -notmatch "\\\.git\\" -and
-        $_.FullName -notmatch "\\__pycache__\\" -and
-        $_.FullName -notmatch "\\\.pytest_cache\\"
-    }
+if (Test-Path -LiteralPath (Join-Path $RepoRoot ".git")) {
+    $publishedPaths = (git -C $RepoRoot ls-files --cached --others --exclude-standard -z) -join "`n"
+    if ($LASTEXITCODE -ne 0) { throw "Cannot enumerate publishable repository files." }
+    $allFiles = @($publishedPaths -split "`0" | Where-Object { $_ } | ForEach-Object {
+        $candidate = Join-Path $RepoRoot $_
+        if (Test-Path -LiteralPath $candidate -PathType Leaf) { Get-Item -LiteralPath $candidate }
+    })
+} else {
+    $allFiles = Get-ChildItem -LiteralPath $RepoRoot -Recurse -File -Force |
+        Where-Object { $_.FullName -notmatch "\\(node_modules|\.venv|venv|env|output|__pycache__|\.pytest_cache|\.impeccable)\\" }
+}
 
 foreach ($file in $allFiles) {
     if ($file.Length -gt ($MaxFileMB * 1024 * 1024)) {
@@ -100,7 +105,7 @@ foreach ($file in $allFiles) {
 }
 Add-Pass "Large file scan completed."
 
-$textExtensions = @(".md", ".py", ".ps1", ".yaml", ".yml", ".txt", ".csv", ".gitignore", "")
+$textExtensions = @(".md", ".py", ".ps1", ".yaml", ".yml", ".txt", ".csv", ".json", ".html", ".css", ".js", ".cjs", ".toml", ".gitignore", "")
 $forbiddenProject = "Rough" + "Cut"
 $lowerForbiddenProject = "rough" + "cut"
 $sensitivePatterns = @(
@@ -181,16 +186,20 @@ if (Test-Path -LiteralPath $gitDir) {
         if ($null -eq $ghCommand) {
             Add-Warn "GitHub publicness check skipped: gh CLI not found."
         } else {
-            $repoJson = gh repo view $slug --json isPrivate,nameWithOwner,url 2>$null
-            if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($repoJson)) {
-                Add-Warn "GitHub publicness check skipped: repo is not available through gh yet."
-            } else {
-                $repo = $repoJson | ConvertFrom-Json
-                if ($repo.isPrivate -eq $true) {
-                    Add-Fail "GitHub repository is private: $($repo.nameWithOwner)"
+            try {
+                $repoJson = gh repo view $slug --json isPrivate,nameWithOwner,url 2>$null
+                if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($repoJson)) {
+                    Add-Warn "GitHub publicness check skipped: repo is not available through gh yet."
                 } else {
-                    Add-Pass "GitHub repository is public: $($repo.url)"
+                    $repo = $repoJson | ConvertFrom-Json
+                    if ($repo.isPrivate -eq $true) {
+                        Add-Fail "GitHub repository is private: $($repo.nameWithOwner)"
+                    } else {
+                        Add-Pass "GitHub repository is public: $($repo.url)"
+                    }
                 }
+            } catch {
+                Add-Warn "GitHub publicness check unavailable; local publishable files were still audited."
             }
         }
     }
