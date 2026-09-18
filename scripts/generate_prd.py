@@ -259,9 +259,9 @@ def priority_rows(features: Dict[str, List[str]]) -> str:
     ]
     labels = ["Must", "Must", "Must", "Should", "Could", "Could"]
     reasons = [
-        "直接支撑核心价值闭环",
+        "候选项，需用核心任务完成率验证",
         "帮助用户理解问题并形成信任",
-        "让风险在延期前被发现",
+        "候选项，需核对是否减少核心任务中的错误",
         "把洞察转成可执行改进",
         "提升传播和复盘效率",
         "增强长期可配置性",
@@ -269,8 +269,8 @@ def priority_rows(features: Dict[str, List[str]]) -> str:
     for index, name in enumerate(features):
         label = labels[index] if index < len(labels) else "Could"
         reason = reasons[index] if index < len(reasons) else "增强完整体验"
-        treatment = "纳入 MVP" if label in {"Must", "Should"} else "放入后续版本评估"
-        rows.append(f"| {name} | {label} | {reason} | {treatment} |")
+        treatment = "候选 MVP，待用户验证" if label in {"Must", "Should"} else "放入后续版本评估"
+        rows.append(f"| {name} | {label}（模板建议） | {reason} | {treatment} |")
     rows.append("| 未经验证的扩展功能 | Won't | 缺少核心任务价值证据 | 当前版本不做 |")
     return "\n".join(rows)
 
@@ -418,7 +418,7 @@ def build_prd(
     {markdown_list(clarification_questions(summary))}
     """
 
-    return textwrap.dedent(content).strip() + "\n"
+    return "\n".join((line[4:] if line.startswith("    ") else line).rstrip() for line in content.splitlines()).strip() + "\n"
 
 
 def parse_args() -> argparse.Namespace:
@@ -448,7 +448,8 @@ def main() -> int:
     prd = build_prd(requirement_markdown, competitors, rules, dry_run=args.dry_run)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(prd, encoding="utf-8")
+    with output_path.open("w", encoding="utf-8", newline="\n") as output:
+        output.write(prd)
 
     if args.dry_run:
         print("Safe Demo dry-run complete: no external services were called.")
