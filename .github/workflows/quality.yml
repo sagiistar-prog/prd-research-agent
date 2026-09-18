@@ -16,6 +16,8 @@ jobs:
       - run: python scripts/plugin_run.py --input examples/plugin-input.json
       - run: python scripts/plugin_run.py --input examples/plugin-input.json --plan examples/team-pulse-plan.json --output-dir output/ci-team
       - run: python scripts/plugin_run.py --input examples/fitcheck-input.json --plan examples/fitcheck-plan.json --output-dir output/ci-fitcheck
+      - run: python scripts/plugin_run.py --input examples/plugin-input.json --plan examples/team-pulse-revision-plan.json --output-dir output/ci-team-revision
+      - run: python scripts/compare_revisions.py --before output/ci-team/result.json --after output/ci-team-revision/result.json --output-dir output/ci-comparison
       - run: python scripts/generate_prd.py --input examples/sample_requirement.md --competitors examples/sample_competitors.csv --output examples/generated_prd.md --rules configs/prd_rules.yaml --dry-run
       - uses: actions/setup-node@v4
         with:
@@ -23,11 +25,13 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:review
+      - run: npm run test:comparison
       - uses: actions/upload-artifact@v4
         with:
           name: review-browser-evidence
           path: |
             output/browser-check/acceptance.json
+            output/browser-comparison/acceptance.json
             .impeccable/review/*.png
           include-hidden-files: true
   portfolio:

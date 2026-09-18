@@ -1,6 +1,6 @@
 {
   "name": "prd-research-agent",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "从原始依据到可追溯、可验收的产品方案",
   "author": {
     "name": "Oscar Qi",
@@ -12,7 +12,7 @@
   "interface": {
     "displayName": "PRD Research Agent",
     "shortDescription": "从原始依据到可追溯、可验收的产品方案",
-    "longDescription": "宿主 AI 或产品负责人规划功能与取舍，本地工具校验原文引用、约束和依赖，输出 PRD、backlog 和可离线打开的评审页。引用通过仍需人工语义评审。",
+    "longDescription": "宿主 AI 或产品负责人规划功能与取舍，本地工具校验原文引用、约束和依赖，输出 PRD、backlog 和离线评审页。修订后可比较版本和重新评审范围；校验通过仍需人工语义评审。",
     "developerName": "Oscar Qi",
     "category": "Productivity",
     "capabilities": [

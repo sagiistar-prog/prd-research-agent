@@ -10,5 +10,6 @@
   "host_skill": "skills/prd-research-agent/SKILL.md",
   "decision_contract": "schemas/plan.schema.json",
   "independent_case": "examples/fitcheck-plan.json",
-  "technical_validation": "docs/evidence-review-acceptance.md"
+  "technical_validation": "docs/evidence-review-acceptance.md",
+  "revision_comparison": "docs/revision-comparison.md"
 }

@@ -1,0 +1,58 @@
+[
+  {
+    "width": 1440,
+    "panels": [
+      {
+        "panel": "changes",
+        "violations": 0
+      },
+      {
+        "panel": "context",
+        "violations": 0
+      },
+      {
+        "panel": "impact",
+        "violations": 0
+      }
+    ],
+    "downloadsMatch": true,
+    "dependencyReview": true,
+    "contextReview": true,
+    "keyboard": true,
+    "addRemove": true,
+    "unchanged": true,
+    "reorder": true,
+    "injectionPrevented": true,
+    "externalRequests": 0,
+    "scriptErrors": 0,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "panels": [
+      {
+        "panel": "changes",
+        "violations": 0
+      },
+      {
+        "panel": "context",
+        "violations": 0
+      },
+      {
+        "panel": "impact",
+        "violations": 0
+      }
+    ],
+    "downloadsMatch": true,
+    "dependencyReview": true,
+    "contextReview": true,
+    "keyboard": true,
+    "addRemove": true,
+    "unchanged": true,
+    "reorder": true,
+    "injectionPrevented": true,
+    "externalRequests": 0,
+    "scriptErrors": 0,
+    "overflow": false
+  }
+]

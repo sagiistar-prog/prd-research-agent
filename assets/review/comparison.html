@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>__TITLE__ 版本比较</title><style>__STYLE__</style></head>
+<body><a class="skip" href="#main">跳到变更内容</a><header><span class="brand">PRD Review</span><span id="state">比较完成</span></header>
+<div class="workspace"><aside><nav aria-label="变更阅读"><button data-panel="changes" aria-current="page">功能变更</button><button data-panel="context">背景与依据</button><button data-panel="impact">重新评审范围</button></nav></aside>
+<main id="main" tabindex="-1"><div class="intro"><div><h1 id="title"></h1><p id="summary"></p></div><button id="download" class="primary">下载变更说明</button></div>
+<section id="changes" aria-labelledby="changes-title"><h2 id="changes-title">功能变更</h2><div class="toolbar"><label>变更类型<select id="kind"><option value="all">全部</option><option value="added">新增</option><option value="removed">移除</option><option value="modified">修改</option></select></label><label>查找功能<input id="search" type="search" placeholder="名称或编号"></label><p id="count" aria-live="polite"></p></div><div id="feature-list"></div><p id="empty" hidden>没有符合条件的功能变更。</p><details id="order" hidden><summary>查看显示次序变化</summary><p id="before-order"></p><p id="after-order"></p></details></section>
+<section id="context" hidden aria-labelledby="context-title"><h2 id="context-title">背景与依据</h2><div id="context-list"></div></section>
+<section id="impact" hidden aria-labelledby="impact-title"><h2 id="impact-title">建议重新评审</h2><p>下列功能可能需要重新核对。依赖关系与背景变化是提示，不代表它们已经失效。</p><div id="impact-list"></div></section>
+<button id="download-json" class="secondary">下载比较数据</button><details><summary>比较依据</summary><p id="before-id"></p><p id="after-id"></p><p>按功能编号对应两版方案。编号改变记为移除和新增，不猜测是否为重命名。此结果不是批准记录。</p></details>
+</main></div><noscript>请启用 JavaScript，或阅读同目录 changes.md。</noscript><script type="application/json" id="comparison-data">__DATA__</script><script>__SCRIPT__</script></body></html>

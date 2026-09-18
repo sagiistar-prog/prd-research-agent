@@ -43,3 +43,15 @@ This checks exact quotes, current input fingerprint, user/problem links, depende
 Read the resulting PRD as the product owner: do the citations really support the decisions, do exclusions respect the brief, and can a tester evaluate the criteria? The checker does not establish these semantic facts. Report assumptions and unresolved decisions alongside the artifacts. Do not present `review_ready` as release approval or real customer validation.
 
 The output folder is local, new, and never overwritten. It contains the PRD, versioned result, backlog and review page. Opening or sharing the review page exposes the included brief to whoever receives it; use fictional examples for public portfolio work.
+
+## Review a revision
+
+Preserve the earlier `result.json`. Keep feature IDs stable when revising the same feature; a new ID is treated as removal plus addition, never guessed as a rename. Revise the plan against the current brief, reconsider citations and constraints, and regenerate a separate result with `plugin_run.py`.
+
+```bash
+python scripts/compare_revisions.py --before output/previous/result.json --after output/revised/result.json --output-dir output/changes
+```
+
+Read the functional changes, background changes and suggested review scope in `output/changes/review.html`. Both snapshots are revalidated; cached Markdown and checks are not authoritative. The comparison follows both old and new dependency graphs. Input or planning-context changes conservatively flag all current features for review. These are candidates, not proven regressions or automatic approval. Feature list reordering alone is shown as display order, not a priority change. Array members within a field are shown in full rather than semantically aligned.
+
+Different product names are rejected by default. Use `--allow-product-rename` only when the user establishes that these are revisions of the same product. Do not compare unrelated products or silently update fingerprints to bypass stale-input validation. The new [comparison contract](../../schemas/comparison.schema.json) does not replace the existing result contract.

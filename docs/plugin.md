@@ -1,6 +1,6 @@
 # 插件契约与使用
 
-根目录 `.codex-plugin/plugin.json` 定义版本 0.3.0 插件，`skills/prd-research-agent/SKILL.md` 是宿主使用入口。Python CLI 可以独立使用；安装为插件后仍由宿主承担语言理解和产品规划，不依赖脚本中的远程模型调用。
+根目录 `.codex-plugin/plugin.json` 定义版本 0.4.0 插件，`skills/prd-research-agent/SKILL.md` 是宿主使用入口。Python CLI 可以独立使用；安装为插件后仍由宿主承担语言理解和产品规划，不依赖脚本中的远程模型调用。
 
 ## 输入与两种结果
 

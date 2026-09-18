@@ -4,7 +4,7 @@
 
 把零散需求转成能逐项追问依据的产品方案。宿主 AI 或产品负责人负责理解业务和作出取舍；本地工具负责保留原文、校验引用和依赖、生成 PRD、验收清单与可交互评审页。
 
-0.3 版移除了按关键词套用行业功能和按顺序分配优先级的逻辑。仅提供需求时输出资料梳理；提交明确的产品方案后才输出功能。每项功能关联用户问题、原始依据或待验证假设。
+0.4 版加入需求版本比较，展示功能和验收条件的变化，并沿依赖链提示重新评审范围。仅提供需求时输出资料梳理；提交明确的产品方案后才输出功能。每项功能关联用户问题、原始依据或待验证假设。
 
 [产品决策案例](docs/product-case.md) | [本轮验收](docs/evidence-review-acceptance.md) | [输入契约](schemas/input.schema.json) | [方案契约](schemas/plan.schema.json)
 
@@ -32,6 +32,18 @@ FitCheck 是汽车售后虚构需求，覆盖本地 CSV、适配异常、人工�
 ![虚构 TeamPulse 方案的本地评审页](docs/screenshots/review-desktop.png)
 
 [手机视图](docs/screenshots/review-mobile.png)
+
+## 需求变了，哪些地方需要重看
+
+保留两次生成的 `result.json`，比较完整方案：
+
+```bash
+python scripts/compare_revisions.py --before output/team-review/result.json --after output/team-revised/result.json --output-dir output/team-changes
+```
+
+打开 `output/team-changes/review.html`，按新增、移除、修改筛选功能，展开前后验收条件，再查看依赖功能的重新评审提示。输出还包括 `changes.md` 和符合 [比较契约](schemas/comparison.schema.json) 的 `changes.json`。
+
+可直接运行的修订示例与边界见 [版本比较验收](docs/revision-comparison.md)。比较前会重新校验输入依据与方案；编号改变记为移除加新增，不猜测重命名。背景或输入变化会保守提示所有现有功能重新核对，比较结果不代表批准。
 
 ## 处理自己的需求
 
@@ -71,6 +83,7 @@ python -m unittest discover -s tests -v
 npm ci
 npx playwright install chromium
 npm run test:review
+npm run test:comparison
 powershell -ExecutionPolicy Bypass -File scripts/portfolio_audit.ps1
 ```
 
